@@ -1,6 +1,5 @@
-const Queue = require('queue-cb');
-const semver = require('semver');
-const exec = require('./lib/exec');
+var Queue = require('queue-cb');
+var exec = require('./lib/exec');
 
 function execCommand(cmd, args, options, callback) {
   if (!options.silent) {
@@ -13,11 +12,17 @@ function execCommand(cmd, args, options, callback) {
 
 function invalidVersions(versions) {
   var invalids = [];
-  for (var index = 0; index < versions.length; index++) {
-    var version = versions[index];
+  for (var i = 0; i < versions.length; i++) {
+    var version = versions[i];
     if (version === 'latest' || version.substr(0, 'lts'.length) === 'lts' || version.substr(0, 'lts'.length + 1) === 'lts/') continue;
-    if (!isNaN(+version) || semver.valid(version)) continue;
-    invalids.push(version);
+
+    var valid = true;
+    var components = version.split('.');
+    for (var j = 0; j < components.length; j++) {
+      valid = !isNaN(+components[j]);
+      if (!valid) break;
+    }
+    if (!valid) invalids.push(version);
   }
   return invalids;
 }
@@ -39,8 +44,8 @@ module.exports = function nvs(versions, command, options, callback) {
     options.silent || console.log('Windows versions not supported yet. Using system version of Node.js');
     queue.defer(execCommand.bind(null, command.shift(), command, options));
   } else {
-    for (var index = 0; index < versions.length; index++) {
-      var version = versions[index];
+    for (var i = 0; i < versions.length; i++) {
+      var version = versions[i];
       queue.defer(execCommand.bind(null, 'nave', ['use', version].concat(command), options));
     }
   }
