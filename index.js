@@ -2,7 +2,10 @@ const spawn = require('cross-spawn');
 const Queue = require('queue-cb');
 
 function exec(cmd, args, callback) {
-  child = spawn(cmd, args, { stdio: 'inherit' });
+  console.log('----------------------');
+  console.log([cmd].concat(args).join(' '));
+  console.log('----------------------');
+  var child = spawn(cmd, args, { stdio: 'inherit' });
   child.on('error', callback).on('close', function (exitCode) {
     if (exitCode === 0) return callback();
     var err = new Error('exit');
