@@ -26,7 +26,7 @@ Examples
 var command = cli.flags['--'];
 if (!command || command.length === 0) return console.log('Error: command missing');
 
-nvs(cli.input, command, { platform: process.platform }, function (err) {
+nvs(cli.input, command, function (err) {
   if (err) {
     console.log(err.message);
     return process.exit(err.exitCode || -1);
