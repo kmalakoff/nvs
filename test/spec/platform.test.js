@@ -11,7 +11,7 @@ describe('platform', function () {
     });
   });
 
-  it('win32 platform', function (done) {
+  it('emulate win32 platform', function (done) {
     nvs(['12', '14'], ['node', '--version'], { platform: 'win32', silent: true }, function (err, count) {
       assert.ok(!err);
       assert.equal(count, 1);

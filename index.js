@@ -1,20 +1,25 @@
-const spawn = require('cross-spawn');
 const Queue = require('queue-cb');
+const semver = require('semver');
+const exec = require('./lib/exec');
 
-function exec(cmd, args, options, callback) {
+function execCommand(cmd, args, options, callback) {
   if (!options.silent) {
     console.log('----------------------');
     console.log([cmd].concat(args).join(' '));
     console.log('----------------------');
   }
+  exec(cmd, args, callback);
+}
 
-  var child = spawn(cmd, args, { stdio: 'inherit' });
-  child.on('error', callback).on('close', function (exitCode) {
-    if (exitCode === 0) return callback();
-    var err = new Error('exit');
-    err.exitCode = exitCode;
-    return callback(err);
-  });
+function invalidVersions(versions) {
+  var invalids = [];
+  for (var index = 0; index < versions.length; index++) {
+    var version = versions[index];
+    if (version === 'latest' || version.substr(0, 'lts'.length) === 'lts' || version.substr(0, 'lts'.length + 1) === 'lts/') continue;
+    if (!isNaN(+version) || semver.valid(version)) continue;
+    invalids.push(version);
+  }
+  return invalids;
 }
 
 module.exports = function nvs(versions, command, options, callback) {
@@ -23,15 +28,20 @@ module.exports = function nvs(versions, command, options, callback) {
     options = {};
   }
   options = options || {};
-  var queue = new Queue(1);
 
+  if (!versions.length) return callback(new Error('No versions provided'));
+  var invalids = invalidVersions(versions);
+  if (invalids.length) return callback(new Error('Invalid versions: ' + invalids.join(' ')));
+
+  var queue = new Queue(1);
   var platform = options.platform || process.platform;
   if (platform === 'win32') {
     options.silent || console.log('Windows versions not supported yet. Using system version of Node.js');
-    queue.defer(exec.bind(null, command.shift(), command, options));
+    queue.defer(execCommand.bind(null, command.shift(), command, options));
   } else {
     for (var index = 0; index < versions.length; index++) {
-      queue.defer(exec.bind(null, 'nave', ['use', versions[index]].concat(command), options));
+      var version = versions[index];
+      queue.defer(execCommand.bind(null, 'nave', ['use', version].concat(command), options));
     }
   }
 
