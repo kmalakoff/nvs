@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const nvs = require('..');
+var nvs = require('..');
 
 if (process.argv.length < 4) {
   console.log('Missing arguments. Example usage: nvs 0.10,4,6,14 npm test');

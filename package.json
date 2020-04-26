@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha test/spec/**/*.test.js",
-    "compat": "nvs 14,12,10,8,6,4,0.12,0.10,0.8 mocha-compat test/spec/**/*.test.js",
+    "compat": "bin/nvs 14,12,10,8,6,4,0.12,0.10,0.8 mocha-compat test/spec/**/*.test.js",
     "lint": "eslint .",
     "format": "prettier --write '**/*.js'"
   },
@@ -20,8 +20,7 @@
     "call-once-next-tick": "^1.0.2",
     "cross-spawn": "^5.1.0",
     "nave": "^3.2.1",
-    "queue-cb": "^1.1.1",
-    "semver": "^7.3.2"
+    "queue-cb": "^1.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -35,7 +34,6 @@
     "lodash.constant": "^3.0.0",
     "mocha": "^7.1.2",
     "mocha-compat": "^3.5.5",
-    "nvs-prev": "npm:nvs",
     "prettier": "^2.0.5"
   }
 }
