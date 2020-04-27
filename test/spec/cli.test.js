@@ -1,47 +1,64 @@
 var assert = require('assert');
 var path = require('path');
-
-var exec = require('../../lib/exec');
+var execa = require('execa');
 
 describe('cli', function () {
-  describe.only('happy path', function () {
+  describe('happy path', function () {
     it('one version', function (done) {
-      exec([path.join(__dirname, '..', '..', 'bin', 'nvs'), '14', 'node', '--version'], function (err, code) {
-        assert.ok(!err);
-        assert.equal(code, 0);
-        done();
-      });
+      execa(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['14', 'node', '--version'])
+        .then(function (res) {
+          assert.equal(res.exitCode, 0);
+          done();
+        })
+        .catch(function (err) {
+          assert.ok(!err);
+        });
     });
 
     it('multiple versions', function (done) {
-      exec([path.join(__dirname, '..', '..', 'bin', 'nvs'), '12,14', 'node', '--version'], function (err, code) {
-        assert.ok(!err);
-        assert.equal(code, 0);
-        done();
-      });
+      execa(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['12,14', 'node', '--version'])
+        .then(function (res) {
+          assert.equal(res.exitCode, 0);
+          done();
+        })
+        .catch(function (err) {
+          assert.ok(!err);
+        });
     });
   });
 
   describe('unhappy path', function () {
     it('missing command', function (done) {
-      exec([path.join(__dirname, '..', '..', 'bin', 'nvs')], function (err, code) {
-        assert.ok(!!err);
-        done();
-      });
+      execa(path.join(__dirname, '..', '..', 'bin', 'nvs'), [])
+        .then(function () {
+          assert.ok(false);
+        })
+        .catch(function (err) {
+          assert.ok(!!err);
+          done();
+        });
     });
 
     it('missing versions', function (done) {
-      exec([path.join(__dirname, '..', '..', 'bin', 'nvs'), 'node', '--version'], function (err, code) {
-        assert.ok(!!err);
-        done();
-      });
+      execa(path.join(__dirname, '..', '..', 'bin', 'nvs'), 'node', ['--version'])
+        .then(function () {
+          assert.ok(false);
+        })
+        .catch(function (err) {
+          assert.ok(!!err);
+          done();
+        });
     });
 
     it('invalid versions', function (done) {
-      exec([path.join(__dirname, '..', '..', 'bin', 'nvs'), 'junk,junk', 'node', '--version'], function (err, code) {
-        assert.ok(!!err);
-        done();
-      });
+      execa(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['junk,junk', 'node', '--version'])
+        .then(function () {
+          assert.ok(false);
+        })
+        .catch(function (err) {
+          assert.ok(!!err);
+          done();
+        });
     });
   });
 });
