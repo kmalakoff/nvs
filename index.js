@@ -3,16 +3,7 @@ var Queue = require('queue-cb');
 var exec = require('./lib/exec');
 var invalidVersions = require('./lib/invalidVersions');
 
-function execCommand(command, options, callback) {
-  if (!options.silent) {
-    console.log('----------------------');
-    console.log(command.join(' '));
-    console.log('----------------------');
-  }
-  exec(command, options, callback);
-}
-
-module.exports = function nvs(versions, command, options, callback) {
+module.exports = function nvs(versions, command, args, options, callback) {
   if (typeof options === 'function') {
     callback = options;
     options = {};
@@ -27,11 +18,11 @@ module.exports = function nvs(versions, command, options, callback) {
   var platform = options.platform || process.platform;
   if (platform === 'win32') {
     options.silent || console.log('Windows versions not supported yet. Using system version of Node.js');
-    queue.defer(execCommand.bind(null, command, options));
+    queue.defer(exec.bind(null, command, args, options));
   } else {
     for (var i = 0; i < versions.length; i++) {
       var version = versions[i];
-      queue.defer(execCommand.bind(null, ['nave', 'use', version].concat(command), options));
+      queue.defer(exec.bind(null, 'nave', ['use', version, command].concat(args), options));
     }
   }
 
