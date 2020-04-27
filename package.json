@@ -1,11 +1,20 @@
 {
   "name": "nvs",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
   "repository": {
     "type": "git",
     "url": "git@github.com:kmalakoff/nvs.git"
   },
+  "keywords": [
+    "use",
+    "node",
+    "versions",
+    "compatability",
+    "npm",
+    "install",
+    "test"
+  ],
   "bin": {
     "nvs": "./bin/nvs"
   },
@@ -17,7 +26,7 @@
     "format": "prettier --write '**/*.js'"
   },
   "dependencies": {
-    "execa": "^4.0.0",
+    "cross-spawn-cb": "^0.1.1",
     "nave": "^3.2.1",
     "queue-cb": "^1.1.2"
   },
@@ -30,7 +39,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "lodash.constant": "^3.0.0",
     "mocha": "^7.1.2",
     "mocha-compat": "^3.5.5",
     "prettier": "^2.0.5"
