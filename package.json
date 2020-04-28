@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "format": "prettier --write '**/*.js'"
   },
   "dependencies": {
+    "commander": "^2.20.3",
     "cross-spawn-cb": "^0.1.1",
     "nave": "^3.2.1",
     "queue-cb": "^1.1.2"

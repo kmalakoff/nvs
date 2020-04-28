@@ -5,3 +5,9 @@ Run commands on multiple versions of node. Useful for compatibility testing.
 ```
 $nvs 0.8,4,8,14 run npm
 ```
+
+Use '--' if the command has options of their own.
+
+```
+$nvs 0.8,4,8,14 -- node --version
+```
