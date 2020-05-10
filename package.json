@@ -1,7 +1,14 @@
 {
   "name": "nvs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
+  "bin": {
+    "nvs": "./bin/nvs"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:kmalakoff/nvs.git"
@@ -15,32 +22,30 @@
     "install",
     "test"
   ],
-  "bin": {
-    "nvs": "./bin/nvs"
-  },
   "license": "MIT",
   "scripts": {
-    "test": "mocha test/spec/**/*.test.js",
-    "compat": "bin/nvs 14,12,10,8,6,4,0.12,0.10,0.8 mocha-compat test/spec/**/*.test.js",
+    "test": "mocha-compat test/spec/**/*.test.js --timeout=5000",
+    "compat": "bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --timeout=5000",
     "lint": "eslint .",
     "format": "prettier --write '**/*.js'"
   },
   "dependencies": {
     "commander": "^2.20.3",
-    "cross-spawn-cb": "^0.1.1",
+    "cross-spawn-cb": "^0.2.2",
+    "lodash.isarray": "^4.0.0",
     "nave": "^3.2.1",
+    "node-semvers": "^0.3.2",
     "queue-cb": "^1.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^7.1.2",
     "mocha-compat": "^3.5.5",
     "prettier": "^2.0.5"
   }
