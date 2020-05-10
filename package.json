@@ -2,17 +2,6 @@
   "name": "nvs",
   "version": "0.3.0",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
-  "bin": {
-    "nvs": "./bin/nvs"
-  },
-  "main": "index.js",
-  "engines": {
-    "node": ">=0.8"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:kmalakoff/nvs.git"
-  },
   "keywords": [
     "use",
     "node",
@@ -22,12 +11,20 @@
     "install",
     "test"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kmalakoff/nvs.git"
+  },
   "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "nvs": "./bin/nvs"
+  },
   "scripts": {
-    "test": "mocha-compat test/spec/**/*.test.js --timeout=5000",
     "compat": "bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --timeout=5000",
+    "format": "prettier --write '**/*.js'",
     "lint": "eslint .",
-    "format": "prettier --write '**/*.js'"
+    "test": "mocha-compat test/spec/**/*.test.js --timeout=5000"
   },
   "dependencies": {
     "commander": "^2.20.3",
@@ -48,5 +45,8 @@
     "eslint-plugin-standard": "^4.0.1",
     "mocha-compat": "^3.5.5",
     "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=0.8"
   }
 }
