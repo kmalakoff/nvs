@@ -7,35 +7,25 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Mocha",
-      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": [
-        "--timeout",
-        "999999",
-        "--colors",
-        "${workspaceFolder}/test/spec/**/*.test.js"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Mocha Compat",
+      "name": "mocha",
       "program": "${workspaceFolder}/node_modules/mocha-compat/bin/_mocha-compat",
-      "args": [
-        "--timeout",
-        "999999",
-        "--colors",
-        "${workspaceFolder}/test/spec/**/*.test.js"
-      ],
+      "args": ["--timeout", "999999", "--colors", "${workspaceFolder}/test/spec/**/*.test.js"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Memory Performance",
+      "name": "cli",
+      "program": "${workspaceFolder}/bin/nvs",
+      "args": ["--versions", "12,13", "--", "node", "--version"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "memory",
       "cwd": "${workspaceFolder}/performance",
       "program": "${workspaceFolder}/performance/memory/index.js",
       "console": "integratedTerminal",
@@ -44,7 +34,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Operations Performance",
+      "name": "ops",
       "cwd": "${workspaceFolder}/performance",
       "program": "${workspaceFolder}/performance/operations/index.js",
       "console": "integratedTerminal",
