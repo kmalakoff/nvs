@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var assign = require('object.assign');
 
 program.option('-e, --engines', 'use engines version range');
 program.option('r, --range [range]', 'range type of major, minor, or patch with filters of lts, even, odd for version string expressions', 'major,even');
@@ -19,7 +20,7 @@ if (args.length < 1) {
 
 var nvs = require('..');
 
-nvs(args[0], args.slice(1), program, function (err) {
+nvs(args[0], args.slice(1), assign({ stdio: 'inherit' }, program), function (err) {
   if (err) {
     console.log(err.message);
     return process.exit(err.code || -1);
