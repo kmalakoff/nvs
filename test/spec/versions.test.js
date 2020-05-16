@@ -45,14 +45,13 @@ describe('versions', function () {
       });
     });
 
-    it.only('multiple versions', function (done) {
+    it('multiple versions', function (done) {
       nvs(NODE, ['--version'], { versions: ['10', '12', 'lts/erbium', 'latest'], now: now, stdout: 'string', cache: true, silent: true }, function (
         err,
         results
       ) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        console.log(JSON.stringify(results));
         assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
         assert.equal(results[1].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
         assert.equal(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
