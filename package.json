@@ -21,10 +21,10 @@
     "nvs": "./bin/nvs"
   },
   "scripts": {
-    "compat": "bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --timeout=5000",
+    "compat": "node ./bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --timeout=9999999",
     "format": "prettier --write '**/*.js'",
     "lint": "eslint .",
-    "test": "mocha-compat test/spec/**/*.test.js --timeout=5000"
+    "test": "mocha-compat test/spec/**/*.test.js --timeout=9999999"
   },
   "dependencies": {
     "commander": "^2.20.3",

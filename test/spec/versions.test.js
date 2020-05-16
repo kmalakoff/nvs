@@ -10,46 +10,53 @@ var now = new Date(Date.parse('2020-05-10T03:23:29.347Z'));
 describe('versions', function () {
   describe('happy path', function () {
     it('one version', function (done) {
-      nvs(NODE, ['--version'], { versions: '12', now: now, stdout: 'string', cache: true, silent: true }, function (err, res) {
+      nvs(NODE, ['--version'], { versions: '12', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
-        assert.ok(res.count > 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+        assert.ok(results.length > 0);
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
         done();
       });
     });
 
     it('latest version', function (done) {
-      nvs(NODE, ['--version'], { versions: 'latest', now: now, stdout: 'string', cache: true, silent: true }, function (err, res) {
+      nvs(NODE, ['--version'], { versions: 'latest', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
-        assert.ok(res.count > 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
+        assert.ok(results.length > 0);
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
         done();
       });
     });
 
     it('lts version', function (done) {
-      nvs(NODE, ['--version'], { versions: 'lts/erbium', now: now, stdout: 'string', cache: true, silent: true }, function (err, res) {
+      nvs(NODE, ['--version'], { versions: 'lts/erbium', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
-        assert.ok(res.count > 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+        assert.ok(results.length > 0);
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
         done();
       });
     });
 
     it('lts/argon version', function (done) {
-      nvs(NODE, ['--version'], { versions: 'lts/argon', now: now, stdout: 'string', cache: true, silent: true }, function (err, res) {
+      nvs(NODE, ['--version'], { versions: 'lts/argon', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
-        assert.ok(res.count > 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
+        assert.ok(results.length > 0);
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
         done();
       });
     });
 
-    it('multiple versions', function (done) {
-      nvs(NODE, ['--version'], { versions: ['10', '12', 'lts/erbium', 'latest'], now: now, stdout: 'string', cache: true, silent: true }, function (err, res) {
+    it.only('multiple versions', function (done) {
+      nvs(NODE, ['--version'], { versions: ['10', '12', 'lts/erbium', 'latest'], now: now, stdout: 'string', cache: true, silent: true }, function (
+        err,
+        results
+      ) {
         assert.ok(!err);
-        assert.ok(res.count > 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
+        assert.ok(results.length > 0);
+        console.log(JSON.stringify(results));
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
+        assert.equal(results[1].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+        assert.equal(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+        assert.equal(results[3].stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
         done();
       });
     });
@@ -59,9 +66,9 @@ describe('versions', function () {
         NODE,
         ['--version'],
         { engines: true, now: now, stdout: 'string', cache: true, cwd: path.resolve(path.join(__dirname, '..', 'data', 'engines')), silent: true },
-        function (err, res) {
+        function (err, results) {
           assert.ok(!err);
-          assert.ok(res.count > 0);
+          assert.ok(results.length > 0);
           done();
         }
       );
@@ -113,7 +120,14 @@ describe('versions', function () {
       nvs(
         NODE,
         ['--version'],
-        { engines: true, now: now, stdout: 'string', cache: true, cwd: path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing')), silent: true },
+        {
+          engines: true,
+          now: now,
+          stdout: 'string',
+          cache: true,
+          cwd: path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing')),
+          silent: true,
+        },
         function (err) {
           assert.ok(!!err);
           done();
