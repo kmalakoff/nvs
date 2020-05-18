@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "commander": "^2.20.3",
-    "cross-spawn-cb": "^0.2.2",
+    "cross-spawn-cb": "^0.2.4",
     "end-with": "^1.0.2",
     "lodash.isarray": "^4.0.0",
     "nave": "^3.2.1",
