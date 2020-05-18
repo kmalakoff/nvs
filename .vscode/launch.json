@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "mocha",
       "program": "${workspaceFolder}/node_modules/mocha-compat/bin/_mocha-compat",
-      "args": ["--timeout", "999999", "--colors", "${workspaceFolder}/test/spec/**/*.test.js"],
+      "args": ["--no-timeouts", "--colors", "${workspaceFolder}/test/spec/**/*.test.js"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },

@@ -61,16 +61,13 @@ describe('versions', function () {
     });
 
     it('using engines', function (done) {
-      nvs(
-        NODE,
-        ['--version'],
-        { engines: true, now: now, stdout: 'string', cache: true, cwd: path.resolve(path.join(__dirname, '..', 'data', 'engines')), silent: true },
-        function (err, results) {
-          assert.ok(!err);
-          assert.ok(results.length > 0);
-          done();
-        }
-      );
+      var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
+      nvs(NODE, ['--version'], { engines: true, now: now, stdout: 'string', cache: true, cwd: cwd, silent: true }, function (err, results) {
+        assert.ok(!err);
+        assert.ok(results.length > 0);
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+        done();
+      });
     });
   });
 
@@ -104,18 +101,7 @@ describe('versions', function () {
     });
 
     it('engines missing', function (done) {
-      nvs(
-        NODE,
-        ['--version'],
-        { engines: true, now: now, stdout: 'string', cache: true, cwd: path.resolve(path.join(__dirname, '..', 'data', 'engines-missing')), silent: true },
-        function (err) {
-          assert.ok(!!err);
-          done();
-        }
-      );
-    });
-
-    it('engines node missing', function (done) {
+      var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-missing'));
       nvs(
         NODE,
         ['--version'],
@@ -124,7 +110,27 @@ describe('versions', function () {
           now: now,
           stdout: 'string',
           cache: true,
-          cwd: path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing')),
+          cwd: cwd,
+          silent: true,
+        },
+        function (err) {
+          assert.ok(!!err);
+          done();
+        }
+      );
+    });
+
+    it('engines node missing', function (done) {
+      var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing'));
+      nvs(
+        NODE,
+        ['--version'],
+        {
+          engines: true,
+          now: now,
+          stdout: 'string',
+          cache: true,
+          cwd: cwd,
           silent: true,
         },
         function (err) {

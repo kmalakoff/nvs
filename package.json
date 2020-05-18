@@ -21,10 +21,10 @@
     "nvs": "./bin/nvs"
   },
   "scripts": {
-    "compat": "node ./bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --timeout=9999999",
+    "compat": "node ./bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --no-timeouts",
     "format": "prettier --write '**/*.js'",
     "lint": "eslint .",
-    "test": "mocha-compat test/spec/**/*.test.js --timeout=9999999"
+    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
     "commander": "^2.20.3",
@@ -32,7 +32,7 @@
     "lodash.isarray": "^4.0.0",
     "nave": "^3.2.1",
     "node-semvers": "^0.4.1",
-    "node-version-use": "^0.1.0",
+    "node-version-use": "^0.1.3",
     "queue-cb": "^1.1.2"
   },
   "devDependencies": {
