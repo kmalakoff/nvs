@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
   "keywords": [
     "use",
@@ -34,7 +34,7 @@
     "lodash.uniq": "^4.5.0",
     "nave": "^3.2.1",
     "node-semvers": "^0.4.3",
-    "node-version-use": "^0.1.4",
+    "node-version-use": "^0.1.6",
     "queue-cb": "^1.1.2",
     "semver": "^6.3.0"
   },
