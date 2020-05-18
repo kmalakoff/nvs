@@ -4,11 +4,11 @@ var program = require('commander');
 var assign = require('object.assign');
 
 program.option('-e, --engines', 'use engines version range');
-program.option('r, --range [range]', 'range type of major, minor, or patch with filters of lts, even, odd for version string expressions', 'major,even');
+program.option('-r, --range [range]', 'range type of major, minor, or patch with filters of lts, even, odd for version string expressions', 'major,even');
 program.option('-v, --versions [version]', 'comma-separated list of versions to run against', function (string) {
   return string.split(',');
 });
-program.option('c, --cache', 'use the cache rather than http for looking up versions');
+program.option('-c, --cache', 'use the cache rather than http for looking up versions');
 program.option('-s, --silent', 'suppress logging', false);
 program.parse(process.argv);
 

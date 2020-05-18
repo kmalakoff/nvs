@@ -21,9 +21,8 @@ module.exports = function nvs(command, args, options, callback) {
       (function () {
         var version = versions[index];
         queue.defer(function (callback) {
-          console.log('----------------------');
-          console.log(version);
-          console.log('----------------------');
+          console.log('');
+          console.log('Using ' + version);
 
           nvu(version, command, args, options, function (err, res) {
             err ? errors.push(err) : results.push(res);
@@ -32,7 +31,7 @@ module.exports = function nvs(command, args, options, callback) {
         });
       })();
     }
-    queue.await(function (err) {
+    queue.await(function () {
       errors.length ? callback(errors) : callback(null, results);
     });
   });
