@@ -52,10 +52,11 @@ describe('versions', function () {
       ) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
+
+        // TODO: return to asc or add as an option
+        assert.equal(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
         assert.equal(results[1].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
-        assert.equal(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
-        assert.equal(results[3].stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
         done();
       });
     });

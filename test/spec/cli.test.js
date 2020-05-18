@@ -48,7 +48,9 @@ describe('cli', function () {
       spawn(CLI, ['--versions', '10,12,lts/erbium,latest', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
+        // TODO: return to asc or add as an option
+        // assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
+        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
         done();
       });
     });
