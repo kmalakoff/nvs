@@ -7,7 +7,7 @@ var EOL = /\r\n|\r|\n/;
 
 describe('cli', function () {
   describe('happy path', function () {
-    it('one version', function (done) {
+    it('one version - 12', function (done) {
       spawn(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['--versions', '12', '--cache', 'npm', 'whoami'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
@@ -16,7 +16,7 @@ describe('cli', function () {
       });
     });
 
-    it('multiple versions', function (done) {
+    it('multiple versions - lts/argon,12', function (done) {
       spawn(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['--versions', 'lts/argon,12', '--cache', 'npm', 'whoami'], { stdout: 'string' }, function (
         err,
         res
@@ -28,7 +28,7 @@ describe('cli', function () {
       });
     });
 
-    it('one version with options', function (done) {
+    it('one version with options - lts/erbium', function (done) {
       spawn(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['--versions', 'lts/erbium', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (
         err,
         res
@@ -40,7 +40,7 @@ describe('cli', function () {
       });
     });
 
-    it('one version with options', function (done) {
+    it('one version with options - lts/argon', function (done) {
       spawn(path.join(__dirname, '..', '..', 'bin', 'nvs'), ['--versions', 'lts/argon', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (
         err,
         res
@@ -52,7 +52,7 @@ describe('cli', function () {
       });
     });
 
-    it('multiple versions with options', function (done) {
+    it('multiple versions with options - 10,12,lts/erbium,latest', function (done) {
       spawn(
         path.join(__dirname, '..', '..', 'bin', 'nvs'),
         ['--versions', '10,12,lts/erbium,latest', '--cache', '--', NODE, '--version'],
@@ -66,7 +66,7 @@ describe('cli', function () {
       );
     });
 
-    it('using engines', function (done) {
+    it('using engines - 12', function (done) {
       spawn(
         path.join(__dirname, '..', '..', 'bin', 'nvs'),
         ['--engines', '--cache', '--', NODE, '--version'],

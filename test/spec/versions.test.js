@@ -9,7 +9,7 @@ var now = new Date(Date.parse('2020-05-10T03:23:29.347Z'));
 
 describe('versions', function () {
   describe('happy path', function () {
-    it('one version', function (done) {
+    it('one version - 12', function (done) {
       nvs(NODE, ['--version'], { versions: '12', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
@@ -18,7 +18,7 @@ describe('versions', function () {
       });
     });
 
-    it('latest version', function (done) {
+    it('latest version - latest', function (done) {
       nvs(NODE, ['--version'], { versions: 'latest', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
@@ -27,7 +27,7 @@ describe('versions', function () {
       });
     });
 
-    it('lts version', function (done) {
+    it('lts version - lts/erbium', function (done) {
       nvs(NODE, ['--version'], { versions: 'lts/erbium', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
@@ -36,7 +36,7 @@ describe('versions', function () {
       });
     });
 
-    it('lts/argon version', function (done) {
+    it('lts/argon version - lts/argon', function (done) {
       nvs(NODE, ['--version'], { versions: 'lts/argon', now: now, stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
@@ -45,7 +45,7 @@ describe('versions', function () {
       });
     });
 
-    it('multiple versions', function (done) {
+    it('multiple versions - 10,12,lts/erbium,latest', function (done) {
       nvs(NODE, ['--version'], { versions: ['10', '12', 'lts/erbium', 'latest'], now: now, stdout: 'string', cache: true, silent: true }, function (
         err,
         results
@@ -60,7 +60,7 @@ describe('versions', function () {
       });
     });
 
-    it('using engines', function (done) {
+    it('using engines - 12', function (done) {
       nvs(
         NODE,
         ['--version'],

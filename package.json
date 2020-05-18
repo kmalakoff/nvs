@@ -29,10 +29,11 @@
   "dependencies": {
     "commander": "^2.20.3",
     "cross-spawn-cb": "^0.2.2",
+    "end-with": "^1.0.2",
     "lodash.isarray": "^4.0.0",
     "nave": "^3.2.1",
     "node-semvers": "^0.4.1",
-    "node-version-use": "^0.1.0",
+    "node-version-use": "^0.1.1",
     "queue-cb": "^1.1.2"
   },
   "devDependencies": {
@@ -48,6 +49,6 @@
     "prettier": "^2.0.5"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=4"
   }
 }
