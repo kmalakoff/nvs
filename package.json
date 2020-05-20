@@ -30,7 +30,7 @@
     "cross-spawn-cb": "^0.2.4",
     "end-with": "^1.0.2",
     "getopts-compat": "^2.2.5",
-    "lodash.isarray": "^4.0.0",
+    "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
     "nave": "^3.2.1",
     "node-semvers": "^0.4.3",
