@@ -18,7 +18,7 @@
       "request": "launch",
       "name": "cli",
       "program": "${workspaceFolder}/bin/nvs",
-      "args": ["--versions", "12", "--", "node", "--version"],
+      "args": ["--versions", "12", "node", "--version"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
