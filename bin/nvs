@@ -4,6 +4,7 @@ var getopts = require('getopts-compat');
 
 var options = getopts(process.argv.slice(2), {
   alias: { engines: 'e', range: 'r', versions: 'v', cache: 'c', silent: 's' },
+  default: { range: 'major,even' },
   boolean: ['cache', 'silent'],
   stopEarly: true,
 });

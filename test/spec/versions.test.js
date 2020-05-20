@@ -70,6 +70,21 @@ describe('versions', function () {
         done();
       });
     });
+
+    describe('promise', function () {
+      if (typeof Promise === 'undefined') return; // no promise support
+
+      it('using engines - 12 (promise)', function (done) {
+        var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
+        nvs(NODE, ['--version'], { engines: true, now: now, stdout: 'string', cache: true, cwd: cwd, silent: true })
+          .then(function (results) {
+            assert.ok(results.length > 0);
+            assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+            done();
+          })
+          .catch(done);
+      });
+    });
   });
 
   describe('unhappy path', function () {
