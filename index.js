@@ -1,7 +1,10 @@
-var nvu = require('node-version-use');
-var Queue = require('queue-cb');
+var assign = require('object-assign');
 
-var resolveVersions = require('./lib/resolveVersions');
+var useVersions = require('./lib/useVersions');
+
+var DEFAULT_OPTIONS = {
+  range: 'major,even',
+};
 
 module.exports = function nvs(command, args, options, callback) {
   if (typeof options === 'function') {
@@ -10,29 +13,10 @@ module.exports = function nvs(command, args, options, callback) {
   }
   options = options || {};
 
-  resolveVersions(options, function (err, versions) {
-    if (err) return callback(err);
-    if (!versions.length) return callback(new Error('No versions provided'));
-
-    var errors = [];
-    var results = [];
-    var queue = new Queue(1);
-    for (var index = 0; index < versions.length; index++) {
-      (function () {
-        var version = versions[index];
-        queue.defer(function (callback) {
-          console.log('');
-          console.log('| ' + version + ' |');
-
-          nvu(version, command, args, options, function (err, res) {
-            err ? errors.push(err) : results.push(res);
-            callback();
-          });
-        });
-      })();
-    }
-    queue.await(function () {
-      errors.length ? callback(errors) : callback(null, results);
+  if (typeof callback === 'function') return useVersions(command, args, assign({}, DEFAULT_OPTIONS, options), callback);
+  return new Promise(function (resolve, reject) {
+    nvs(command, args, options, function nvsCallback(err, result) {
+      err ? reject(err) : resolve(result);
     });
   });
 };
