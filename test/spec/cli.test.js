@@ -27,7 +27,7 @@ describe('cli', function () {
     });
 
     it('one version with options - lts/erbium', function (done) {
-      spawn(CLI, ['--versions', 'lts/erbium', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'lts/erbium', '--cache', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
@@ -36,7 +36,7 @@ describe('cli', function () {
     });
 
     it('one version with options - lts/argon', function (done) {
-      spawn(CLI, ['--versions', 'lts/argon', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'lts/argon', '--cache', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
@@ -45,7 +45,7 @@ describe('cli', function () {
     });
 
     it('multiple versions with options - 10,12,lts/erbium,latest', function (done) {
-      spawn(CLI, ['--versions', '10,12,lts/erbium,latest', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', '10,12,lts/erbium,latest', '--cache', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         // TODO: return to asc or add as an option
@@ -56,6 +56,16 @@ describe('cli', function () {
     });
 
     it('using engines - 12', function (done) {
+      var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
+      spawn(CLI, ['--engines', '--cache', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
+        assert.ok(!err);
+        assert.ok(res.code === 0);
+        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v12.16.3');
+        done();
+      });
+    });
+
+    it('using engines - 12 (--)', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
       spawn(CLI, ['--engines', '--cache', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
@@ -76,7 +86,7 @@ describe('cli', function () {
     });
 
     it('missing versions', function (done) {
-      spawn(CLI, ['--versions', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', '--cache', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code !== 0);
         done();
@@ -84,7 +94,7 @@ describe('cli', function () {
     });
 
     it('invalid versions', function (done) {
-      spawn(CLI, ['--versions', 'junk,junk', '--cache', '--', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'junk,junk', '--cache', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code !== 0);
         done();
@@ -93,7 +103,7 @@ describe('cli', function () {
 
     it('engines missing', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-missing'));
-      spawn(CLI, ['--engines', '--cache', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
+      spawn(CLI, ['--engines', '--cache', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code !== 0);
         done();
@@ -102,7 +112,7 @@ describe('cli', function () {
 
     it('engines node missing', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing'));
-      spawn(CLI, ['--engines', '--cache', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
+      spawn(CLI, ['--engines', '--cache', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code !== 0);
         done();

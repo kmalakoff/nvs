@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
   "keywords": [
     "use",
@@ -27,14 +27,15 @@
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
-    "commander": "^2.20.3",
     "cross-spawn-cb": "^0.2.4",
     "end-with": "^1.0.2",
+    "getopts-compat": "^2.2.5",
     "lodash.isarray": "^4.0.0",
     "lodash.uniq": "^4.5.0",
     "nave": "^3.2.1",
     "node-semvers": "^0.4.3",
     "node-version-use": "^0.1.6",
+    "object-assign": "^4.1.1",
     "queue-cb": "^1.1.2",
     "semver": "^6.3.0"
   },
