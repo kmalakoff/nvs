@@ -22,7 +22,7 @@
   },
   "scripts": {
     "compat": "node ./bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --no-timeouts",
-    "format": "prettier --write '**/*.js'",
+    "format": "eslint . --fix",
     "lint": "eslint .",
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
@@ -33,15 +33,15 @@
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
     "nave": "^3.2.1",
-    "node-semvers": "^0.4.3",
-    "node-version-use": "^0.1.6",
+    "node-semvers": "^0.4.6",
+    "node-version-use": "^0.1.7",
     "object-assign": "^4.1.1",
     "queue-cb": "^1.1.2",
     "semver": "^6.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.0.0",
+    "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
