@@ -21,10 +21,10 @@
     "nvs": "./bin/nvs"
   },
   "scripts": {
-    "compat": "node ./bin/nvs --engines -- mocha-compat test/spec/**/*.test.js  --no-timeouts",
     "format": "eslint . --fix",
     "lint": "eslint .",
-    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
+    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
+    "compat": "./bin/nvs --engines mocha-compat test/spec/**/*.test.js  --no-timeouts"
   },
   "dependencies": {
     "cross-spawn-cb": "^0.2.4",
