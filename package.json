@@ -33,7 +33,7 @@
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
     "nave": "^3.2.1",
-    "node-semvers": "^0.4.10",
+    "node-semvers": "^0.4.11",
     "node-version-use": "^0.1.8",
     "object-assign": "^4.1.1",
     "queue-cb": "^1.1.2",
