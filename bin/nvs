@@ -3,7 +3,7 @@
 var getopts = require('getopts-compat');
 
 var options = getopts(process.argv.slice(2), {
-  alias: { engines: 'e', range: 'r', versions: 'v', cache: 'c', silent: 's' },
+  alias: { engines: 'e', range: 'r', versions: 'v', silent: 's' },
   default: { range: 'major,even' },
   boolean: ['engines', 'cache', 'silent'],
   stopEarly: true,
@@ -14,7 +14,6 @@ var options = getopts(process.argv.slice(2), {
 // define.option('-v, --versions [version]', 'comma-separated list of versions to run against', function (string) {
 //   return string.split(',');
 // });
-// define.option('-c, --cache', 'use the cache rather than http for looking up versions');
 // define.option('-s, --silent', 'suppress logging', false);
 if (typeof options.versions === 'string') options.versions = options.versions.split(',');
 
