@@ -54,9 +54,9 @@ describe('versions', function () {
         assert.ok(results.length > 0);
 
         // TODO: return to asc or add as an option
-        assert.equal(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
+        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
         assert.ok(results[1].stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
-        // assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
+        // assert.equal(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
         done();
       });
     });
