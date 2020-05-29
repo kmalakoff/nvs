@@ -1,6 +1,7 @@
 var assert = require('assert');
 var path = require('path');
 var spawn = require('cross-spawn-cb');
+var isVersion = require('is-version');
 
 var CLI = path.join(__dirname, '..', '..', 'bin', 'nvs');
 var NODE = process.platform === 'win32' ? 'node.exe' : 'node';
@@ -9,19 +10,19 @@ var EOL = /\r\n|\r|\n/;
 describe('cli', function () {
   describe('happy path', function () {
     it('one version - 12', function (done) {
-      spawn(CLI, ['--versions', '12', 'npm', 'whoami'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', '12', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].length > 1);
+        assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0]));
         done();
       });
     });
 
     it('multiple versions - lts/argon,12', function (done) {
-      spawn(CLI, ['--versions', 'lts/argon,12', 'npm', 'whoami'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'lts/argon,12', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].length > 0);
+        assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0]));
         done();
       });
     });
@@ -49,8 +50,7 @@ describe('cli', function () {
         assert.ok(!err);
         assert.ok(res.code === 0);
         // TODO: return to asc or add as an option
-        // assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v13.14.0');
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
+        assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0], 'v'));
         done();
       });
     });

@@ -24,7 +24,7 @@ if (args.length < 1) {
 }
 
 var assign = require('object-assign');
-var isArray = require('is-array');
+var isArray = require('isarray');
 var nvs = require('..');
 
 nvs(args[0], args.slice(1), assign({ stdio: 'inherit' }, options), function (err, results) {
