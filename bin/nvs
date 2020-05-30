@@ -2,24 +2,19 @@
 
 var getopts = require('getopts-compat');
 
-var options = getopts(process.argv.slice(2), {
-  alias: { engines: 'e', range: 'r', versions: 'v', silent: 's' },
+var options = getopts(process.argv.slice(3), {
+  alias: { range: 'r', silent: 's' },
   default: { range: 'major,even' },
-  boolean: ['engines', 'cache', 'silent'],
+  boolean: ['silent'],
   stopEarly: true,
 });
 
-// define.option('-e, --engines', 'use engines version range');
 // define.option('-r, --range [range]', 'range type of major, minor, or patch with filters of lts, even, odd for version string expressions', 'major,even');
-// define.option('-v, --versions [version]', 'comma-separated list of versions to run against', function (string) {
-//   return string.split(',');
-// });
 // define.option('-s, --silent', 'suppress logging', false);
-if (typeof options.versions === 'string') options.versions = options.versions.split(',');
 
-var args = options._;
+var args = process.argv.slice(2, 3).concat(options._);
 if (args.length < 1) {
-  console.log('Missing command. Example usage: nvs --versions 0.10,4,6,14 [command]');
+  console.log('Missing command. Example usage: nvs [version expression] [command]');
   return process.exit(-1);
 }
 
@@ -32,7 +27,7 @@ if (!options.silent)
     console.log('----------------------');
   };
 
-nvs(args[0], args.slice(1), options, function (err, results) {
+nvs(args[0], args[1], args.slice(2), options, function (err, results) {
   if (err) {
     console.log(err.message);
     return process.exit(err.code || -1);
