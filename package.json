@@ -38,7 +38,7 @@
     "node-version-use": "^0.1.9",
     "object-assign": "^4.1.1",
     "queue-cb": "^1.1.4",
-    "semver": "^6.3.0"
+    "semver": "^5.7.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
