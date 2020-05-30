@@ -10,7 +10,7 @@ var EOL = /\r\n|\r|\n/;
 describe('cli', function () {
   describe('happy path', function () {
     it('one version - 12', function (done) {
-      spawn(CLI, ['--versions', '12', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', '12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0]));
@@ -19,7 +19,7 @@ describe('cli', function () {
     });
 
     it('multiple versions - lts/argon,12', function (done) {
-      spawn(CLI, ['--versions', 'lts/argon,12', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'lts/argon,12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0]));
@@ -28,7 +28,7 @@ describe('cli', function () {
     });
 
     it('one version with options - lts/erbium', function (done) {
-      spawn(CLI, ['--versions', 'lts/erbium', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'lts/erbium', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
@@ -37,7 +37,7 @@ describe('cli', function () {
     });
 
     it('one version with options - lts/argon', function (done) {
-      spawn(CLI, ['--versions', 'lts/argon', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', 'lts/argon', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
@@ -46,7 +46,7 @@ describe('cli', function () {
     });
 
     it('multiple versions with options - 10,12,lts/erbium,latest', function (done) {
-      spawn(CLI, ['--versions', '10,12,lts/erbium,latest', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions', '10,12,lts/erbium,latest', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         // TODO: return to asc or add as an option
@@ -57,7 +57,7 @@ describe('cli', function () {
 
     it('using engines - 12', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
-      spawn(CLI, ['--engines', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
+      spawn(CLI, ['--engines', '--silent', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
@@ -67,7 +67,7 @@ describe('cli', function () {
 
     it('using engines - 12 (--)', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
-      spawn(CLI, ['--engines', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
+      spawn(CLI, ['--engines', '--silent', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
         assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
@@ -78,7 +78,7 @@ describe('cli', function () {
 
   describe('unhappy path', function () {
     it('missing command', function (done) {
-      spawn(CLI, ['--versions', '--cache'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, ['--versions'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code !== 0);
         done();

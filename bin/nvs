@@ -23,17 +23,40 @@ if (args.length < 1) {
   return process.exit(-1);
 }
 
-var assign = require('object-assign');
-var isArray = require('isarray');
 var nvs = require('..');
 
-nvs(args[0], args.slice(1), assign({ stdio: 'inherit' }, options), function (err, results) {
+if (!options.silent)
+  options.header = function (version, command, args) {
+    console.log('\n----------------------');
+    console.log([command].concat(args).join(' ') + ' (' + version + ')');
+    console.log('----------------------');
+  };
+
+nvs(args[0], args.slice(1), options, function (err, results) {
   if (err) {
-    if (!isArray(err)) err = [err];
-    for (var index = 0; index < err.length; err++) {
-      console.log(err[index].message);
-    }
-    return process.exit(-1);
+    console.log(err.message);
+    return process.exit(err.code || -1);
   }
-  process.exit(0);
+  var errors = [];
+  for (var index = 0; index < results.length; index++) {
+    var result = results[index];
+    if (result.error || result.result.code !== 0) errors.push(results[index]);
+  }
+
+  if (!options.silent) {
+    console.log('\n======================');
+    if (errors.length) {
+      console.log('Errors (' + errors.length + ')');
+      // eslint-disable-next-line no-redeclare
+      for (var index = 0; index < errors.length; index++) {
+        // eslint-disable-next-line no-redeclare
+        var result = errors[index];
+        if (result.error) console.log(result.path + ' Error: ' + result.error.message);
+        else console.log(result.path + ' Exit Code: ' + result.code);
+      }
+    } else console.log('Success (' + results.length + ')');
+    console.log('======================');
+  }
+
+  process.exit(errors.length ? -1 : 0);
 });

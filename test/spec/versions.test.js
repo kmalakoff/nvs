@@ -14,7 +14,7 @@ describe('versions', function () {
       nvs(NODE, ['--version'], { versions: '12', stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.ok(results[0].stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        assert.ok(results[0].result.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
@@ -23,7 +23,7 @@ describe('versions', function () {
       nvs(NODE, ['--version'], { versions: 'latest', stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.ok(isVersion(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v'));
+        assert.ok(isVersion(results[0].result.stdout.split(EOL).slice(-2, -1)[0], 'v'));
         done();
       });
     });
@@ -32,7 +32,7 @@ describe('versions', function () {
       nvs(NODE, ['--version'], { versions: 'lts/erbium', stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.ok(results[0].stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        assert.ok(results[0].result.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
@@ -41,7 +41,7 @@ describe('versions', function () {
       nvs(NODE, ['--version'], { versions: 'lts/argon', stdout: 'string', cache: true, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
+        assert.equal(results[0].result.stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
         done();
       });
     });
@@ -52,9 +52,9 @@ describe('versions', function () {
         assert.ok(results.length > 0);
 
         // TODO: return to asc or add as an option
-        assert.equal(results[0].stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
-        assert.ok(results[1].stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
-        assert.ok(isVersion(results[2].stdout.split(EOL).slice(-2, -1)[0], 'v'));
+        assert.equal(results[0].result.stdout.split(EOL).slice(-2, -1)[0], 'v10.20.1');
+        assert.ok(results[1].result.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        assert.ok(isVersion(results[2].result.stdout.split(EOL).slice(-2, -1)[0], 'v'));
         done();
       });
     });
@@ -64,7 +64,7 @@ describe('versions', function () {
       nvs(NODE, ['--version'], { engines: true, stdout: 'string', cache: true, cwd: cwd, silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.ok(results[0].stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        assert.ok(results[0].result.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
@@ -77,7 +77,7 @@ describe('versions', function () {
         nvs(NODE, ['--version'], { engines: true, stdout: 'string', cache: true, cwd: cwd, silent: true })
           .then(function (results) {
             assert.ok(results.length > 0);
-            assert.ok(results[0].stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+            assert.ok(results[0].result.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
             done();
           })
           .catch(done);
