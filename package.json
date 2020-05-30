@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.4.12",
+  "version": "0.4.13",
   "description": "Run commands on multiple versions of node. Useful for compatibility testing.",
   "keywords": [
     "use",
