@@ -78,7 +78,7 @@ describe('cli', function () {
 
   describe('unhappy path', function () {
     it('missing command', function (done) {
-      spawn(CLI, ['--versions'], { stdout: 'string' }, function (err, res) {
+      spawn(CLI, [], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code !== 0);
         done();
