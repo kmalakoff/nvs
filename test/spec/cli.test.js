@@ -12,7 +12,6 @@ describe('cli', function () {
     it('one version - 12', function (done) {
       spawn(CLI, ['12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         var lines = cr(res.stdout).split('\n');
         assert.ok(isVersion(lines.slice(-2, -1)[0]));
         done();
@@ -22,7 +21,6 @@ describe('cli', function () {
     it('multiple versions - lts/argon,12', function (done) {
       spawn(CLI, ['lts/argon,12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         var lines = cr(res.stdout).split('\n');
         assert.ok(isVersion(lines.slice(-2, -1)[0]));
         done();
@@ -32,7 +30,6 @@ describe('cli', function () {
     it('one version with options - lts/erbium', function (done) {
       spawn(CLI, ['lts/erbium', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         var lines = cr(res.stdout).split('\n');
         assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
@@ -42,7 +39,6 @@ describe('cli', function () {
     it('one version with options - lts/argon', function (done) {
       spawn(CLI, ['lts/argon', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         var lines = cr(res.stdout).split('\n');
         assert.equal(lines.slice(-2, -1)[0], 'v4.9.1');
         done();
@@ -52,7 +48,6 @@ describe('cli', function () {
     it('multiple versions with options - 10,12,lts/erbium,latest', function (done) {
       spawn(CLI, ['10,12,lts/erbium,latest', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         // TODO: return to asc or add as an option
         var lines = cr(res.stdout).split('\n');
         assert.ok(isVersion(lines.slice(-2, -1)[0], 'v'));
@@ -64,7 +59,6 @@ describe('cli', function () {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
       spawn(CLI, ['engines', '--silent', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         var lines = cr(res.stdout).split('\n');
         assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
@@ -75,7 +69,6 @@ describe('cli', function () {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
       spawn(CLI, ['engines', '--silent', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code === 0);
         var lines = cr(res.stdout).split('\n');
         assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
@@ -87,7 +80,6 @@ describe('cli', function () {
     it('missing command', function (done) {
       spawn(CLI, [], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code !== 0);
         done();
       });
     });
@@ -95,7 +87,6 @@ describe('cli', function () {
     it('missing versions', function (done) {
       spawn(CLI, [NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code !== 0);
         done();
       });
     });
@@ -103,7 +94,6 @@ describe('cli', function () {
     it('invalid versions', function (done) {
       spawn(CLI, ['junk,junk', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code !== 0);
         done();
       });
     });
@@ -112,7 +102,6 @@ describe('cli', function () {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-missing'));
       spawn(CLI, ['engines', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code !== 0);
         done();
       });
     });
@@ -121,7 +110,6 @@ describe('cli', function () {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing'));
       spawn(CLI, ['engines', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
-        assert.ok(res.code !== 0);
         done();
       });
     });

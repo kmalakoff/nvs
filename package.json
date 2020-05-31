@@ -27,7 +27,7 @@
     "compat": "./bin/nvs engines mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
-    "cross-spawn-cb": "^0.2.4",
+    "cross-spawn-cb": "^0.3.1",
     "getopts-compat": "^2.2.5",
     "node-resolve-versions": "^0.1.2",
     "node-version-use": "^0.1.9",

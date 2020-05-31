@@ -32,22 +32,17 @@ var getopts = require('getopts-compat');
       console.log(err.message);
       return process.exit(err.code || -1);
     }
-    var errors = [];
-    for (var index = 0; index < results.length; index++) {
-      var result = results[index];
-      if (result.error || result.result.code !== 0) errors.push(results[index]);
-    }
+    var errors = results.filter(function (result) {
+      return !!result.error;
+    });
 
     if (!options.silent) {
       console.log('\n======================');
       if (errors.length) {
         console.log('Errors (' + errors.length + ')');
-        // eslint-disable-next-line no-redeclare
         for (var index = 0; index < errors.length; index++) {
-          // eslint-disable-next-line no-redeclare
           var result = errors[index];
-          if (result.error) console.log(result.version + ' Error: ' + result.error.message);
-          else console.log(result.version + ' Exit Code: ' + result.result.code);
+          console.log(result.version + ' Error: ' + result.error.message);
         }
       } else console.log('Success (' + results.length + ')');
       console.log('======================');
