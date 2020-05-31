@@ -3,7 +3,7 @@ var path = require('path');
 var spawn = require('cross-spawn-cb');
 var isVersion = require('is-version');
 
-var CLI = path.join(__dirname, '..', '..', 'bin', 'nvs');
+var CLI = path.join(__dirname, '..', '..', 'bin', 'nvs.js');
 var NODE = process.platform === 'win32' ? 'node.exe' : 'node';
 var EOL = process.platform === 'win32' ? '\r\n' : '\n';
 
