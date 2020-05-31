@@ -79,21 +79,21 @@ describe('cli', function () {
   describe('unhappy path', function () {
     it('missing command', function (done) {
       spawn(CLI, [], { stdout: 'string' }, function (err, res) {
-        assert.ok(!err);
+        assert.ok(!!err);
         done();
       });
     });
 
     it('missing versions', function (done) {
       spawn(CLI, [NODE, '--version'], { stdout: 'string' }, function (err, res) {
-        assert.ok(!err);
+        assert.ok(!!err);
         done();
       });
     });
 
     it('invalid versions', function (done) {
       spawn(CLI, ['junk,junk', NODE, '--version'], { stdout: 'string' }, function (err, res) {
-        assert.ok(!err);
+        assert.ok(!!err);
         done();
       });
     });
@@ -101,7 +101,7 @@ describe('cli', function () {
     it('engines missing', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-missing'));
       spawn(CLI, ['engines', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
-        assert.ok(!err);
+        assert.ok(!!err);
         done();
       });
     });
@@ -109,7 +109,7 @@ describe('cli', function () {
     it('engines node missing', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing'));
       spawn(CLI, ['engines', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
-        assert.ok(!err);
+        assert.ok(!!err);
         done();
       });
     });
