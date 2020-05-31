@@ -4,14 +4,15 @@ var getopts = require('getopts-compat');
 
 (function () {
   var options = getopts(process.argv.slice(3), {
-    alias: { range: 'r', silent: 's' },
+    alias: { range: 'r', desc: 'd', silent: 's' },
     default: { range: 'major,even' },
-    boolean: ['silent'],
+    boolean: ['silent', 'desc'],
     stopEarly: true,
   });
 
   // define.option('-r, --range [range]', 'range type of major, minor, or patch with filters of lts, even, odd for version string expressions', 'major,even');
   // define.option('-s, --silent', 'suppress logging', false);
+  options.sort = options.desc ? -1 : 1;
 
   var args = process.argv.slice(2, 3).concat(options._);
   if (args.length < 1) {
@@ -48,6 +49,7 @@ var getopts = require('getopts-compat');
       console.log('======================');
     }
 
-    process.exit(errors.length ? -1 : 0);
+    if (errors.length) return process.exit(-1);
+    process.exit(0);
   });
 })();
