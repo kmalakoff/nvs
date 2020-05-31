@@ -55,4 +55,4 @@ var getopts = require('getopts-compat');
 
     process.exit(errors.length ? -1 : 0);
   });
-});
+})();

@@ -2,10 +2,10 @@ var assert = require('assert');
 var path = require('path');
 var spawn = require('cross-spawn-cb');
 var isVersion = require('is-version');
+var cr = require('cr');
 
 var CLI = path.join(__dirname, '..', '..', 'bin', 'nvs.js');
 var NODE = process.platform === 'win32' ? 'node.exe' : 'node';
-var EOL = process.platform === 'win32' ? '\r\n' : '\n';
 
 describe('cli', function () {
   describe('happy path', function () {
@@ -13,7 +13,8 @@ describe('cli', function () {
       spawn(CLI, ['12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0]));
+        var lines = cr(res.stdout).split('\n');
+        assert.ok(isVersion(lines.slice(-2, -1)[0]));
         done();
       });
     });
@@ -22,7 +23,8 @@ describe('cli', function () {
       spawn(CLI, ['lts/argon,12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0]));
+        var lines = cr(res.stdout).split('\n');
+        assert.ok(isVersion(lines.slice(-2, -1)[0]));
         done();
       });
     });
@@ -31,7 +33,8 @@ describe('cli', function () {
       spawn(CLI, ['lts/erbium', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        var lines = cr(res.stdout).split('\n');
+        assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
@@ -40,7 +43,8 @@ describe('cli', function () {
       spawn(CLI, ['lts/argon', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.equal(res.stdout.split(EOL).slice(-2, -1)[0], 'v4.9.1');
+        var lines = cr(res.stdout).split('\n');
+        assert.equal(lines.slice(-2, -1)[0], 'v4.9.1');
         done();
       });
     });
@@ -50,7 +54,8 @@ describe('cli', function () {
         assert.ok(!err);
         assert.ok(res.code === 0);
         // TODO: return to asc or add as an option
-        assert.ok(isVersion(res.stdout.split(EOL).slice(-2, -1)[0], 'v'));
+        var lines = cr(res.stdout).split('\n');
+        assert.ok(isVersion(lines.slice(-2, -1)[0], 'v'));
         done();
       });
     });
@@ -60,7 +65,8 @@ describe('cli', function () {
       spawn(CLI, ['engines', '--silent', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        var lines = cr(res.stdout).split('\n');
+        assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
@@ -70,7 +76,8 @@ describe('cli', function () {
       spawn(CLI, ['engines', '--silent', '--', NODE, '--version'], { stdout: 'string', cwd: cwd }, function (err, res) {
         assert.ok(!err);
         assert.ok(res.code === 0);
-        assert.ok(res.stdout.split(EOL).slice(-2, -1)[0].indexOf('v12.') === 0);
+        var lines = cr(res.stdout).split('\n');
+        assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
