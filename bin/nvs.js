@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var getopts = require('getopts-compat');
+var exit = require('exit');
+var nvs = require('..');
 
 (function () {
   var options = getopts(process.argv.slice(3), {
@@ -17,9 +19,8 @@ var getopts = require('getopts-compat');
   var args = process.argv.slice(2, 3).concat(options._);
   if (args.length < 1) {
     console.log('Missing command. Example usage: nvs [version expression] [command]');
-    return process.exit(-1);
+    return exit(-1);
   }
-  var nvs = require('..');
 
   if (!options.silent)
     options.header = function (version, command, args) {
@@ -31,7 +32,7 @@ var getopts = require('getopts-compat');
   nvs(args[0], args[1], args.slice(2), options, function (err, results) {
     if (err) {
       console.log(err.message);
-      return process.exit(err.code || -1);
+      return exit(err.code || -1);
     }
     var errors = results.filter(function (result) {
       return !!result.error;
@@ -49,7 +50,6 @@ var getopts = require('getopts-compat');
       console.log('======================');
     }
 
-    if (errors.length) return process.exit(-1);
-    process.exit(0);
+    exit(errors.length ? -1 : 0);
   });
 })();
