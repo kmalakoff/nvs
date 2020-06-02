@@ -1,6 +1,5 @@
 var assert = require('assert');
 var path = require('path');
-var isVersion = require('is-version');
 var cr = require('cr');
 
 var nvs = require('../..');
