@@ -25,7 +25,7 @@
     "lint": "eslint .",
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
     "compat": "./bin/nvs.js engines mocha-compat test/spec/**/*.test.js --no-timeouts",
-    "prepublishOnly": "dtd \"npm run lint\" \"depcheck --ignores='depcheck'\""
+    "prepublishOnly": "dtd \"npm run lint\" \"depcheck\""
   },
   "dependencies": {
     "cross-spawn-cb": "^0.3.1",
