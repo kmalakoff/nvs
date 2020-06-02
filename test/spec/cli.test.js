@@ -45,22 +45,20 @@ describe('cli', function () {
       });
     });
 
-    it('multiple versions with options - 10,12,lts/erbium,latest', function (done) {
-      spawn(CLI, ['10,12,lts/erbium,latest', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+    it('multiple versions with options - 10,12,lts/erbium', function (done) {
+      spawn(CLI, ['10,12,lts/erbium', '--silent', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         var lines = cr(res.stdout).split('\n');
-        assert.equal(lines.slice(-4, -3)[0], 'v10.20.1');
-        assert.ok(lines.slice(-3, -2)[0].indexOf('v12.') === 0);
-        assert.ok(isVersion(lines.slice(-2, -1)[0], 'v'));
+        assert.equal(lines.slice(-3, -2)[0], 'v10.20.1');
+        assert.ok(lines.slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
     });
 
-    it('multiple versions with options - 10,12,lts/erbium,latest (sort desc)', function (done) {
-      spawn(CLI, ['10,12,lts/erbium,latest', '--silent', '--desc', NODE, '--version'], { stdout: 'string' }, function (err, res) {
+    it('multiple versions with options - 10,12,lts/erbium (sort desc)', function (done) {
+      spawn(CLI, ['10,12,lts/erbium', '--silent', '--desc', NODE, '--version'], { stdout: 'string' }, function (err, res) {
         assert.ok(!err);
         var lines = cr(res.stdout).split('\n');
-        assert.ok(isVersion(lines.slice(-4, -3)[0], 'v'));
         assert.ok(lines.slice(-3, -2)[0].indexOf('v12.') === 0);
         assert.equal(lines.slice(-2, -1)[0], 'v10.20.1');
         done();

@@ -18,7 +18,7 @@
       "request": "launch",
       "name": "cli",
       "program": "${workspaceFolder}/bin/nvs",
-      "args": ["12", "node", "--version"],
+      "args": ["10,12,lts/erbium", "node", "--version"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
