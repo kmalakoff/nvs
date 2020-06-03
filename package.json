@@ -21,11 +21,11 @@
     "nvs": "./bin/nvs.js"
   },
   "scripts": {
+    "compat": "./bin/nvs.js engines mocha-compat test/spec/**/*.test.js --no-timeouts",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
-    "compat": "./bin/nvs.js engines mocha-compat test/spec/**/*.test.js --no-timeouts",
-    "prepublishOnly": "dtd \"npm run lint\" \"depcheck\""
+    "prepublishOnly": "dtd \"npm run lint\" \"depcheck\"",
+    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
     "cross-spawn-cb": "^0.3.1",
