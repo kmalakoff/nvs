@@ -40,7 +40,7 @@ describe('versions', function () {
       nvs('10,12,lts/erbium', NODE, ['--version'], { stdout: 'string', silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.equal(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0], 'v10.20.1');
+        assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v10.') === 0);
         assert.ok(cr(results[1].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
         done();
       });
@@ -51,7 +51,7 @@ describe('versions', function () {
         assert.ok(!err);
         assert.ok(results.length > 0);
         assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
-        assert.equal(cr(results[1].result.stdout).split('\n').slice(-2, -1)[0], 'v10.20.1');
+        assert.ok(cr(results[1].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v10.') === 0);
         done();
       });
     });
