@@ -32,7 +32,7 @@
     "exit": "^0.1.2",
     "getopts-compat": "^2.2.5",
     "node-resolve-versions": "^0.1.2",
-    "node-version-use": "^0.1.12",
+    "node-version-use": "^0.1.13",
     "object-assign": "^4.1.1",
     "queue-cb": "^1.1.4"
   },
