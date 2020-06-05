@@ -1,6 +1,5 @@
 .vscode/
-compatibility/
-performance/
+.tmp/
 test/
 .depcheckrc
 .eslintignore
@@ -9,4 +8,3 @@ test/
 .prettierrc
 .travis.yml
 README.md
-
