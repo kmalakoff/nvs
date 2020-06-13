@@ -29,13 +29,7 @@
   },
   "dependencies": {
     "cross-spawn-cb": "^0.3.1",
-    "exit": "^0.1.2",
-    "getopts-compat": "^2.2.5",
-    "node-resolve-versions": "^0.1.5",
-    "node-version-use": "^0.1.16",
-    "node-version-utils": "^0.1.1",
-    "object-assign": "^4.1.1",
-    "queue-cb": "^1.1.4"
+    "node-version-use": "^0.1.16"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -51,7 +45,8 @@
     "eslint-plugin-standard": "^4.0.1",
     "is-version": "^0.2.0",
     "mocha-compat": "^3.5.5",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2"
   },
   "engines": {
     "node": ">=0.8"
