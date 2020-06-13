@@ -7,4 +7,4 @@ os:
   - windows
 script:
   - npm install node-version-use -g
-  - nvu engines ./node_modules/.bin/mocha-compat test/spec/**/*.test.js --no-timeouts
+  - nvu engines npm test
