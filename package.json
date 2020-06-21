@@ -28,7 +28,7 @@
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
-    "node-version-use": "^0.1.18"
+    "node-version-use": "^0.1.19"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
