@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.4.18",
+  "version": "0.5.0",
   "description": "Cross-platform solution for using multiple versions of node. Useful for compatibility testing",
   "keywords": [
     "use",
@@ -28,7 +28,7 @@
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
-    "node-version-use": "^0.1.21"
+    "node-version-use": "^0.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
