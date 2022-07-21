@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Cross-platform solution for using multiple versions of node. Useful for compatibility testing",
   "keywords": [
     "use",
@@ -16,36 +16,37 @@
     "url": "git@github.com:kmalakoff/nvs.git"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "nvs": "./bin/nvs.js"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "compat": "./bin/nvs.js engines mocha-compat test/spec/**/*.test.js --no-timeouts",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "prepublishOnly": "dtd \"npm run lint\" \"depcheck\"",
-    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
+    "prepublishOnly": "npm run lint && depcheck",
+    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
+    "test:engines": "nvu engines npm test"
   },
   "dependencies": {
-    "node-version-use": "^0.2.0"
+    "node-version-use": "^0.3.2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
+    "@typescript-eslint/parser": "^5.30.7",
     "cr": "^0.1.0",
-    "cross-spawn-cb": "^0.3.1",
-    "depcheck": "^1.0.0",
-    "dis-dat": "^0.1.3",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "is-version": "^0.2.0",
+    "cross-spawn-cb": "^0.6.5",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
+    "is-version": "^0.2.1",
     "mocha-compat": "^3.5.5",
-    "prettier": "^2.0.5",
+    "prettier": "^2.7.1",
     "rimraf": "^2.7.1"
   },
   "engines": {

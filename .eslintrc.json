@@ -1,0 +1,14 @@
+{
+  "extends": ["standard", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-var": "off",
+    "object-shorthand": "off",
+    "no-extend-native": "off"
+  }
+}

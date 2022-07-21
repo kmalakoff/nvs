@@ -8,7 +8,7 @@ var CLI = path.join(__dirname, '..', '..', 'bin', 'nvs.js');
 
 describe('cli', function () {
   it('one version - 12', function (done) {
-    spawn(CLI, ['12', '--silent', 'npm', '--version'], { stdout: 'string' }, function (err, res) {
+    spawn(CLI, ['12', '--silent', 'npm', '--version'], { encoding: 'utf8' }, function (err, res) {
       assert.ok(!err);
       var lines = cr(res.stdout).split('\n');
       assert.ok(isVersion(lines.slice(-2, -1)[0]));
