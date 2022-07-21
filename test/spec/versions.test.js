@@ -14,7 +14,7 @@ var OPTIONS = {
   installedDirectory: path.join(TMP_DIR, 'installed'),
   buildDirectory: path.join(TMP_DIR, 'build'),
   now: now,
-  stdout: 'string',
+  encoding: 'utf8',
   silent: true,
 };
 
