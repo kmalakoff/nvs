@@ -31,7 +31,7 @@
     "test:engines": "nvu engines npm test"
   },
   "dependencies": {
-    "node-version-use": "^0.3.2"
+    "node-version-use": "^0.3.3"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.30.7",
