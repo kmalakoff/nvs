@@ -32,14 +32,14 @@
     "test:engines": "nvu engines npm test"
   },
   "dependencies": {
-    "node-version-use": "^0.3.4"
+    "node-version-use": "^0.3.6"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.30.7",
+    "@typescript-eslint/parser": "^5.31.0",
     "cr": "^0.1.0",
-    "cross-spawn-cb": "^0.6.6",
+    "cross-spawn-cb": "^0.6.8",
     "depcheck": "^1.4.3",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
