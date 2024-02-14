@@ -1,16 +1,20 @@
-var assert = require('assert');
-var path = require('path');
-var spawn = require('cross-spawn-cb');
-var isVersion = require('is-version');
-var cr = require('cr');
+// remove NODE_OPTIONS from ts-dev-stack
+// biome-ignore lint/performance/noDelete: <explanation>
+delete process.env.NODE_OPTIONS;
 
-var CLI = path.join(__dirname, '..', '..', 'bin', 'nvs.js');
+const assert = require('assert');
+const path = require('path');
+const spawn = require('cross-spawn-cb');
+const isVersion = require('is-version');
+const cr = require('cr');
 
-describe('cli', function () {
-  it('one version - 12', function (done) {
-    spawn(CLI, ['12', '--silent', 'npm', '--version'], { encoding: 'utf8' }, function (err, res) {
+const CLI = path.join(__dirname, '..', '..', 'bin', 'cli.js');
+
+describe('cli', () => {
+  it('one version - 12', (done) => {
+    spawn(CLI, ['12', '--silent', 'npm', '--version'], { encoding: 'utf8' }, (err, res) => {
       assert.ok(!err);
-      var lines = cr(res.stdout).split('\n');
+      const lines = cr(res.stdout).split('\n');
       assert.ok(isVersion(lines.slice(-2, -1)[0]));
       done();
     });
