@@ -7,9 +7,18 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "mocha",
+      "name": "test:node",
       "program": "${workspaceFolder}/node_modules/mocha-compat/bin/_mocha-compat",
       "args": ["--no-timeouts", "--colors", "${workspaceFolder}/test/spec/**/*.test.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test:node",
+      "program": "${workspaceFolder}/node_modules/mocha-compat/bin/nvu",
+      "args": ["mocha-compat", "--no-timeouts", "--colors", "${workspaceFolder}/test/spec/**/*.test.js"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },

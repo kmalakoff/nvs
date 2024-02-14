@@ -1,4 +1,10 @@
 {
   "name": "engines-node-missing",
-  "engines": {}
+  "engines": {},
+  "tsds": {
+    "source": "src/index.js",
+    "targets": [
+      "cjs"
+    ]
+  }
 }

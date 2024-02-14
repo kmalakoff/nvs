@@ -16,40 +16,41 @@
     "url": "git@github.com:kmalakoff/nvs.git"
   },
   "license": "MIT",
-  "main": "lib/index.js",
   "bin": {
-    "nvs": "./bin/nvs.js"
+    "nvs": "./bin/cli.js"
   },
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "format": "prettier --write .",
-    "lint": "eslint .",
-    "prepublishOnly": "npm run lint && depcheck",
-    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
-    "test:engines": "nvu engines npm test"
-  },
-  "dependencies": {
-    "node-version-use": "^0.3.2"
+    "build": "tsds build",
+    "deploy": "tsds deploy",
+    "format": "biome check --apply-unsafe src/ test/",
+    "test": "tsds test:node --timeout=40000",
+    "test:engines": "nvu engines tsds test:node --timeout=40000",
+    "version": "tsds version"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.30.7",
+    "@biomejs/biome": "^1.5.3",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.17",
     "cr": "^0.1.0",
-    "cross-spawn-cb": "^0.6.5",
-    "depcheck": "^1.4.3",
-    "eslint": "^8.20.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.4",
-    "eslint-plugin-promise": "^6.0.0",
+    "cross-spawn-cb": "^0.6.17",
+    "depcheck": "^1.4.7",
     "is-version": "^0.2.1",
-    "mocha-compat": "^3.5.5",
-    "prettier": "^2.7.1",
-    "rimraf": "^2.7.1"
+    "node-version-use": "^0.4.7",
+    "rimraf": "^2.7.1",
+    "ts-dev-stack": "^0.9.7"
   },
   "engines": {
     "node": ">=0.8"
+  },
+  "tsds": {
+    "source": "src/index.js",
+    "targets": [
+      "cjs"
+    ]
   }
 }

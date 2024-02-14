@@ -2,5 +2,11 @@
   "name": "engines",
   "engines": {
     "node": "12"
+  },
+  "tsds": {
+    "source": "src/index.js",
+    "targets": [
+      "cjs"
+    ]
   }
 }
