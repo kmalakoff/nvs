@@ -1,1 +1,1 @@
-{"version":3,"sources":["index.js"],"sourcesContent":["module.exports = require('node-version-use');\n"],"names":["module","exports","require"],"mappings":";AAAAA,OAAOC,OAAO,GAAGC,QAAQ"}
+{"version":3,"sources":["index.mjs"],"sourcesContent":["import nvu from 'node-version-use';\nexport default nvu\n"],"names":["nvu"],"mappings":";;;;+BACA;;;eAAA;;;qEADgB;;;;;;IAChB,WAAeA,uBAAG"}
