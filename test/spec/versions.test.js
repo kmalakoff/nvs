@@ -4,7 +4,7 @@ delete process.env.NODE_OPTIONS;
 
 const assert = require('assert');
 const path = require('path');
-const rimraf = require('rimraf');
+const rimraf2 = require('rimraf2');
 const cr = require('cr');
 
 const nvs = require('nvs');
@@ -24,12 +24,12 @@ const OPTIONS = {
 
 describe('versions', () => {
   before((callback) => {
-    rimraf(TMP_DIR, callback.bind(null, null));
+    rimraf2(TMP_DIR, { disableGlob: true }, callback.bind(null, null));
   });
 
   it('one version - 12', (done) => {
     nvs('12', NODE, ['--version'], OPTIONS, (err, results) => {
-      assert.ok(!err);
+      assert.ok(!err, err ? err.message : '');
       assert.ok(results.length > 0);
       assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
       done();

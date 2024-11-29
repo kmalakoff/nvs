@@ -13,7 +13,7 @@ const CLI = path.join(__dirname, '..', '..', 'bin', 'cli.js');
 describe('cli', () => {
   it('one version - 12', (done) => {
     spawn(CLI, ['12', '--silent', 'npm', '--version'], { encoding: 'utf8' }, (err, res) => {
-      assert.ok(!err);
+      assert.ok(!err, err ? err.message : '');
       const lines = cr(res.stdout).split('\n');
       assert.ok(isVersion(lines.slice(-2, -1)[0]));
       done();
