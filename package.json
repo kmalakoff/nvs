@@ -16,39 +16,42 @@
     "url": "git@github.com:kmalakoff/nvs.git"
   },
   "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
   "bin": {
     "nvs": "./bin/cli.js"
   },
-  "main": "dist/cjs/index.js",
-  "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsds build",
     "deploy": "tsds deploy",
-    "format": "biome check --apply-unsafe src/ test/",
-    "test": "tsds test:node --timeout=40000",
-    "test:engines": "nvu engines tsds test:node --timeout=40000",
+    "format": "biome check --write --unsafe src/ test/",
+    "test": "tsds test:node --no-timeouts",
+    "test:engines": "nvu engines npm test",
     "version": "tsds version"
   },
+  "dependencies": {
+    "node-version-use": "^1.0.0"
+  },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.17",
+    "@biomejs/biome": "^1.9.4",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.1",
     "cr": "^0.1.0",
-    "cross-spawn-cb": "^0.6.17",
+    "cross-spawn-cb": "^1.1.0",
     "depcheck": "^1.4.7",
     "is-version": "^0.2.1",
-    "node-version-use": "^0.4.7",
-    "rimraf": "^2.7.1",
-    "ts-dev-stack": "^0.9.7"
+    "rimraf2": "^2.7.1",
+    "ts-dev-stack": "^0.16.3"
   },
   "engines": {
     "node": ">=0.8"
   },
   "tsds": {
-    "source": "src/index.js",
+    "source": "src/index.mjs",
     "targets": [
       "cjs"
     ]
