@@ -34,7 +34,7 @@ var NODE = process.platform === 'win32' ? 'node.exe' : 'node';
 
 // results is an array per-version of form {version, error, result}
 nvs('>=0.8', NODE, ['--version'], { versions: '12', stdio: 'inherit' }, function (err, results) {
-  assert.ok(!err);
+  assert.ok(!err, err ? err.message : '');
 });
 
 // results is an array per-version of form {version, error, result}
