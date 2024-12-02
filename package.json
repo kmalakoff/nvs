@@ -34,18 +34,18 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "node-version-use": "^1.0.0"
+    "node-version-use": "^1.0.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.10.1",
     "cr": "^0.1.0",
-    "cross-spawn-cb": "^1.1.0",
+    "cross-spawn-cb": "^1.1.1",
     "depcheck": "^1.4.7",
     "is-version": "^0.2.1",
-    "rimraf2": "^2.7.1",
-    "ts-dev-stack": "^0.16.3"
+    "rimraf2": "^2.8.2",
+    "ts-dev-stack": "^1.0.1"
   },
   "engines": {
     "node": ">=0.8"
