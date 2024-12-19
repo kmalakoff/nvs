@@ -4,6 +4,8 @@ updates:
     directory: '/'
     schedule:
       interval: weekly
+      - dependency-name: '@types/mocha'
+      - dependency-name: '@types/node'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
