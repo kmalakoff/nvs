@@ -1,5 +1,4 @@
 // remove NODE_OPTIONS from ts-dev-stack
-// biome-ignore lint/performance/noDelete: <explanation>
 delete process.env.NODE_OPTIONS;
 
 const assert = require('assert');
@@ -8,7 +7,7 @@ const spawn = require('cross-spawn-cb');
 const isVersion = require('is-version');
 const cr = require('cr');
 
-const CLI = path.join(__dirname, '..', '..', 'bin', 'cli.js');
+const CLI = path.join(__dirname, '..', '..', 'bin', 'cli.cjs');
 
 describe('cli', () => {
   it('one version - 12', (done) => {

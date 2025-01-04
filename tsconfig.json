@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
+    "outDir": "dist",
     "lib": ["es2015"],
     "types": ["mocha", "node"],
     "target": "es2020",
