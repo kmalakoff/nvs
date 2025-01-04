@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:kmalakoff/nvs.git"
+    "url": "git+ssh://git@github.com/kmalakoff/nvs.git"
   },
   "license": "MIT",
   "type": "commonjs",
@@ -35,7 +35,7 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "node-version-use": "^1.3.0"
+    "node-version-use": "^1.3.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
