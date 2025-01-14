@@ -35,7 +35,7 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "node-version-use": "^1.5.5"
+    "node-version-use": "^1.5.7"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
