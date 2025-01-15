@@ -27,7 +27,7 @@ describe('versions', () => {
 
   it('one version - 12', (done) => {
     nvs('12', NODE, ['--version'], OPTIONS, (err, results) => {
-      assert.ok(!err, err ? err.message : '');
+      if (err) return done(err.message);
       assert.ok(results.length > 0);
       assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
       done();

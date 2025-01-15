@@ -35,16 +35,15 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "node-version-use": "^1.5.9"
+    "node-version-use": "^1.5.10"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^22.10.6",
-    "cr": "^0.1.0",
-    "cross-spawn-cb": "^2.1.5",
-    "is-version": "^0.2.7",
-    "rimraf2": "^2.8.2"
+    "@types/mocha": "*",
+    "@types/node": "*",
+    "cr": "*",
+    "cross-spawn-cb": "*",
+    "is-version": "*",
+    "rimraf2": "*"
   },
   "engines": {
     "node": ">=0.8"
