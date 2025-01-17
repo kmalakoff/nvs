@@ -17,13 +17,13 @@ const OPTIONS = {
   cachePath: path.join(TMP_DIR, 'cache'),
   installedDirectory: path.join(TMP_DIR, 'installed'),
   buildPath: path.join(TMP_DIR, 'build'),
-  now: now,
+  now,
   encoding: 'utf8',
   silent: true,
 };
 
 describe('versions', () => {
-  before((cb) => rimraf2(TMP_DIR, { disableGlob: true }, cb.bind(null, null)));
+  before(rimraf2.bind(null, TMP_DIR, { disableGlob: true }));
 
   it('one version - 12', (done) => {
     nvs('12', NODE, ['--version'], OPTIONS, (err, results) => {
