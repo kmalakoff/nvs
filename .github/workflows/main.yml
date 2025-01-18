@@ -18,13 +18,10 @@ jobs:
           node-version: 'lts/Jod'
       - run: git config --global user.name "Github Actions"
       - run: git config --global user.email "actions@users.noreply.github.com"
-      - run: npm install rimraf -g
-      - run: rimraf $HOME/.im
-      - run: npm install ts-dev-stack node-version-use -g --force
-      - run: npm install depcheck -g
+      - run: npm install ts-dev-stack node-version-use depcheck @biomejs/biome -g -f
       - run: depcheck
       - run: npm ci
-      - run: npm run docs
       - run: npm run build
+      - run: tsds validate
       - run: npm run test
       - run: npm run test:engines
