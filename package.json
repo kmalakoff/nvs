@@ -35,7 +35,7 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "node-version-use": "^1.5.50"
+    "node-version-use": "^1.5.51"
   },
   "devDependencies": {
     "@types/mocha": "*",
