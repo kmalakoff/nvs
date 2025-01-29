@@ -4,4 +4,4 @@
 node_modules/
 dist/
 docs/
-npm-debug.log
+npm-debug.log*
