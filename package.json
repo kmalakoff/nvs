@@ -18,7 +18,7 @@
   "license": "MIT",
   "type": "commonjs",
   "main": "dist/cjs/index.cjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/cjs/index.d.cts",
   "bin": {
     "nvs": "./bin/cli.cjs"
   },
@@ -35,7 +35,7 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "cross-spawn-cb": "^2.1.23",
+    "cross-spawn-cb": "^2.1.24",
     "node-version-use": "^1.5.90"
   },
   "devDependencies": {
