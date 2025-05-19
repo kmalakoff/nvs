@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "type": "commonjs",
-  "main": "dist/cjs/index.cjs",
+  "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.cts",
   "bin": {
     "nvs": "./bin/cli.cjs"
@@ -35,8 +35,8 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "cross-spawn-cb": "^2.1.25",
-    "node-version-use": "^1.5.93"
+    "cross-spawn-cb": "^2.2.1",
+    "node-version-use": "^1.5.95"
   },
   "devDependencies": {
     "@types/mocha": "*",
@@ -49,7 +49,7 @@
     "node": ">=0.8"
   },
   "tsds": {
-    "source": "src/index.mjs",
+    "source": "src/index.ts",
     "targets": [
       "cjs"
     ]
