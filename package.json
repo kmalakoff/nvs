@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "1.0.69",
+  "version": "1.0.70",
   "description": "Cross-platform solution for using multiple versions of node. Useful for compatibility testing",
   "keywords": [
     "use",
