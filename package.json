@@ -37,13 +37,13 @@
     "deploy": "tsds deploy",
     "docs": "tsds docs",
     "format": "biome check --write --unsafe",
-    "test": "tsds test:node --no-timeouts",
-    "test:engines": "nvu engines npm test",
+    "test": "mocha --no-timeouts test/**/*.test.*",
+    "test:engines": "nvu engines tsds test:node --no-timeouts",
     "version": "tsds version"
   },
   "dependencies": {
     "cross-spawn-cb": "^2.2.9",
-    "node-version-use": "^1.5.109"
+    "node-version-use": "^1.5.113"
   },
   "devDependencies": {
     "@types/mocha": "*",
