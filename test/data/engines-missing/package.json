@@ -1,4 +1,5 @@
 {
   "name": "nvs-engines-missing",
-  "private": true
+  "private": true,
+  "version": ""
 }
