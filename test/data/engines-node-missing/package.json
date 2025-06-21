@@ -1,5 +1,6 @@
 {
   "name": "nvs-engines-node-missing",
   "private": true,
-  "engines": {}
+  "engines": {},
+  "version": ""
 }

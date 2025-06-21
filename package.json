@@ -27,7 +27,7 @@
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.cts",
   "bin": {
-    "nvs": "./bin/cli.cjs"
+    "nvs": "bin/cli.cjs"
   },
   "files": [
     "dist"
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "cross-spawn-cb": "^2.2.10",
-    "node-version-use": "^1.5.114"
+    "node-version-use": "^1.6.0"
   },
   "devDependencies": {
     "@types/mocha": "*",
