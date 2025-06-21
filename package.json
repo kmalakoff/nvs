@@ -42,8 +42,8 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "cross-spawn-cb": "^2.3.2",
-    "node-version-use": "^1.6.1"
+    "cross-spawn-cb": "^2.3.3",
+    "node-version-use": "^1.6.2"
   },
   "devDependencies": {
     "@types/mocha": "*",
