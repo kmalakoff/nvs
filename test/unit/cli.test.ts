@@ -14,7 +14,10 @@ const CLI = path.join(__dirname, '..', '..', 'bin', 'cli.cjs');
 describe('cli', () => {
   it('one version - 12', (done) => {
     spawn(CLI, ['--silent', '12', 'npm', '--version'], { encoding: 'utf8' }, (err, res) => {
-      if (err) return done(err.message);
+      if (err) {
+        done(err.message);
+        return;
+      }
       const lines = cr(res.stdout).split('\n');
       assert.ok(isVersion(lines.slice(-2, -1)[0]));
       done();
