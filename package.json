@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "cross-spawn-cb": "^2.4.2",
-    "node-version-use": "^1.7.6"
+    "node-version-use": "^1.7.7"
   },
   "devDependencies": {
     "@types/mocha": "*",
