@@ -3,7 +3,6 @@ delete process.env.NODE_OPTIONS;
 
 import assert from 'assert';
 import cr from 'cr';
-// @ts-ignore
 import nvs from 'nvs';
 import path from 'path';
 import rimraf2 from 'rimraf2';
