@@ -1,7 +1,13 @@
 .DS_Store
-.tmp/
-.cache/
 node_modules/
 dist/
 docs/
 npm-debug.log*
+.tmp/
+.cache/
+
+# agents
+.agents/
+AGENTS.md
+.claude/
+CLAUDE.md
