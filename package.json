@@ -34,9 +34,9 @@
   ],
   "scripts": {
     "build": "tsds build",
-    "deploy": "tsds deploy",
     "docs": "tsds docs",
     "format": "biome check --write --unsafe",
+    "prepublishOnly": "tsds validate",
     "test": "mocha --no-timeouts test/**/*.test.*",
     "test:engines": "nvu engines tsds test:node --no-timeouts",
     "version": "tsds version"
