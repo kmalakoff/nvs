@@ -19,7 +19,7 @@ const OPTIONS = {
   installedDirectory: path.join(TMP_DIR, 'installed'),
   buildPath: path.join(TMP_DIR, 'build'),
   now,
-  encoding: 'utf8',
+  encoding: 'utf8' as const,
   silent: true,
 };
 
