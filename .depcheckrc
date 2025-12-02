@@ -1,2 +1,2 @@
-ignores: ["nvs"]
+ignores: ["node-version-use", "ts-dev-stack", "@biomejs/biome", "nvs"]
 ignoreDirs: [".tmp"]
