@@ -1,42 +1,39 @@
 {
-  "name": "nvs",
-  "version": "1.1.20",
-  "description": "CLI wrapper for node-version-use (nvu)",
-  "keywords": [
-    "nvs",
-    "nvu",
-    "node-version-use",
-    "cli",
-    "node",
-    "versions"
-  ],
-  "homepage": "https://github.com/kmalakoff/node-version-use",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kmalakoff/nvs.git"
-  },
-  "license": "MIT",
-  "author": "Kevin Malakoff <kmalakoff@gmail.com> (https://github.com/kmalakoff)",
-  "bin": {
-    "nvs": "bin/cli.cjs"
-  },
-  "files": [
-    "bin"
-  ],
-  "scripts": {
-    "format": "echo \"CLI wrapper - no format\"",
-    "prepublishOnly": "tsds validate",
-    "test": "echo \"CLI wrapper - no tests\"",
-    "test:engines": "echo \"CLI wrapper - no tests\"",
-    "version": "echo \"CLI wrapper - no version\""
-  },
-  "dependencies": {
-    "node-version-use": "*"
-  },
-  "devDependencies": {
-    "ts-dev-stack": "*"
-  },
-  "engines": {
-    "node": ">=0.8"
-  }
+	"name": "nvs",
+	"version": "1.1.20",
+	"description": "CLI wrapper for node-version-use (nvu)",
+	"keywords": [
+		"nvs",
+		"nvu",
+		"node-version-use",
+		"cli",
+		"node",
+		"versions"
+	],
+	"homepage": "https://github.com/kmalakoff/node-version-use",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/kmalakoff/nvs.git"
+	},
+	"license": "MIT",
+	"author": "Kevin Malakoff <kmalakoff@gmail.com> (https://github.com/kmalakoff)",
+	"bin": {
+		"nvs": "bin/cli.cjs"
+	},
+	"files": [
+		"bin"
+	],
+	"scripts": {
+		"format": "echo \"CLI wrapper - no format\"",
+		"prepublishOnly": "tsds validate",
+		"test": "echo \"CLI wrapper - no tests\"",
+		"test:engines": "echo \"CLI wrapper - no tests\"",
+		"version": "echo \"CLI wrapper - no version\""
+	},
+	"dependencies": {
+		"node-version-use": "*"
+	},
+	"engines": {
+		"node": ">=0.8"
+	}
 }
