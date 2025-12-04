@@ -1,8 +1,0 @@
-{
-  "name": "nvs-engines",
-  "private": true,
-  "engines": {
-    "node": "12"
-  },
-  "version": ""
-}
