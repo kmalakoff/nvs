@@ -1,43 +1,18 @@
 ## nvs
 
-Cross-platform solution for using multiple versions of node. Useful for compatibility testing.
+CLI wrapper for [node-version-use](https://github.com/kmalakoff/node-version-use). Enables running nvu commands via npx without local installation.
 
-cli
+### Usage
 
-```
-# specific version
-$ nvs 14.4.0 npm run test
+```bash
+# Run without installing locally
+npx nvs 14.4.0 npm run test
+npx nvs lts npm run test
+npx nvs engines node --version
 
-# highest of version
-$ nvs 12 npm run test
-
-# lts
-$ nvs lts npm run test
-
-# comma-delimiter list
-$ nvs 0.8,4,8,14 npm run test
-
-# use expression
-$ nvs >=0.8 node --version
-
-# use engines.node from package.json
-$ nvs engines node --version
+# Or install globally
+npm install -g nvs
+nvs 14.4.0 npm run test
 ```
 
-JavaScript
-
-```
-var assert = require('assert');
-var nvs = require('nvs');
-
-var isWindows = process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE);
-var NODE = isWindows ? 'node.exe' : 'node';
-
-// results is an array per-version of form {version, error, result}
-nvs('>=0.8', NODE, ['--version'], { versions: '12', stdio: 'inherit' }, function (err, results) {
-  assert.ok(!err, err ? err.message : '');
-});
-
-// results is an array per-version of form {version, error, result}
-await nvs('engines', NODE, ['--version'], { versions: '12', stdio: 'inherit' });
-```
+See [node-version-use](https://github.com/kmalakoff/node-version-use) for full documentation.

@@ -1,64 +1,42 @@
 {
   "name": "nvs",
   "version": "1.1.15",
-  "description": "Cross-platform solution for using multiple versions of node. Useful for compatibility testing",
+  "description": "CLI wrapper for node-version-use (nvu)",
   "keywords": [
-    "use",
+    "nvs",
+    "nvu",
+    "node-version-use",
+    "cli",
     "node",
-    "versions",
-    "compatability",
-    "npm",
-    "install",
-    "test"
+    "versions"
   ],
+  "homepage": "https://github.com/kmalakoff/node-version-use",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/kmalakoff/nvs.git"
   },
   "license": "MIT",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "main": "dist/cjs/index.js",
-  "types": "dist/cjs/index.d.ts",
+  "author": "Kevin Malakoff <kmalakoff@gmail.com> (https://github.com/kmalakoff)",
   "bin": {
     "nvs": "bin/cli.cjs"
   },
   "files": [
-    "dist"
+    "bin"
   ],
   "scripts": {
-    "build": "tsds build",
-    "docs": "tsds docs",
-    "format": "biome check --write --unsafe",
+    "format": "echo \"CLI wrapper - no format\"",
     "prepublishOnly": "tsds validate",
-    "test": "tsds test:node --no-timeouts",
-    "test:engines": "nvu engines tsds test:node --no-timeouts",
+    "test": "echo \"CLI wrapper - no tests\"",
+    "test:engines": "echo \"CLI wrapper - no tests\"",
     "version": "tsds version"
   },
   "dependencies": {
-    "cross-spawn-cb": "*",
     "node-version-use": "*"
   },
   "devDependencies": {
-    "@biomejs/biome": "*",
-    "@types/mocha": "*",
-    "@types/node": "*",
-    "cr": "*",
-    "is-version": "*",
-    "node-version-use": "*",
-    "rimraf2": "*",
     "ts-dev-stack": "*"
   },
   "engines": {
     "node": ">=0.8"
-  },
-  "tsds": {
-    "source": "src/index.ts"
   }
 }
