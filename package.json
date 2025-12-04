@@ -1,6 +1,6 @@
 {
   "name": "nvs",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "description": "CLI wrapper for node-version-use (nvu)",
   "keywords": [
     "nvs",
@@ -28,7 +28,7 @@
     "prepublishOnly": "tsds validate",
     "test": "echo \"CLI wrapper - no tests\"",
     "test:engines": "echo \"CLI wrapper - no tests\"",
-    "version": "tsds version"
+    "version": "echo \"CLI wrapper - no version\""
   },
   "dependencies": {
     "node-version-use": "*"
