@@ -31,7 +31,7 @@
 		"version": "echo \"CLI wrapper - no version\""
 	},
 	"dependencies": {
-		"node-version-use": "*"
+		"node-version-use": "^2.1.6"
 	},
 	"engines": {
 		"node": ">=0.8"
