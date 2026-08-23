@@ -20,9 +20,6 @@
 	"bin": {
 		"nvs": "bin/cli.cjs"
 	},
-	"files": [
-		"bin"
-	],
 	"scripts": {
 		"format": "echo \"CLI wrapper - no format\"",
 		"prepublishOnly": "tsds validate",
