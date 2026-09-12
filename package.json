@@ -18,31 +18,26 @@
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "nvs": "./bin/nvs"
+    "nvs": "./bin/nvs.js"
   },
   "scripts": {
-    "format": "eslint . --fix",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
     "compat": "./bin/nvs engines mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
-    "cross-spawn-cb": "^0.2.4",
-    "end-with": "^1.0.2",
+    "cross-spawn-cb": "^0.3.1",
     "getopts-compat": "^2.2.5",
-    "isarray": "^2.0.5",
-    "lodash.uniq": "^4.5.0",
-    "nave": "^3.2.2",
     "node-resolve-versions": "^0.1.2",
-    "node-semvers": "^0.4.13",
     "node-version-use": "^0.1.9",
     "object-assign": "^4.1.1",
-    "queue-cb": "^1.1.4",
-    "semver": "^6.3.0"
+    "queue-cb": "^1.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.1.0",
+    "cr": "^0.1.0",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
