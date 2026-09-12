@@ -22,7 +22,7 @@ module.exports = function nvs(command, args, options, callback) {
         var version = versions[index];
         queue.defer(function (callback) {
           console.log('');
-          console.log('Using ' + version);
+          console.log('| ' + version + ' |');
 
           nvu(version, command, args, options, function (err, res) {
             err ? errors.push(err) : results.push(res);

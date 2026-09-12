@@ -18,7 +18,7 @@
       "request": "launch",
       "name": "cli",
       "program": "${workspaceFolder}/bin/nvs",
-      "args": ["--versions", "12,13", "--", "node", "--version"],
+      "args": ["--versions", "12", "--", "node", "--version"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -26,9 +26,10 @@
       "type": "node",
       "request": "launch",
       "name": "compat",
-      "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "compat"],
+      "runtimeExecutable": "C:\\Users\\Kevin\\.nvu\\installed\\v0.10.48\\node.exe",
+      "protocol": "legacy",
+      "program": "${workspaceFolder}/node_modules/mocha-compat/bin/_mocha-compat",
+      "args": ["--no-timeouts", "--colors", "${workspaceFolder}/test/spec/**/*.test.js"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
