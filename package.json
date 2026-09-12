@@ -21,23 +21,26 @@
     "nvs": "./bin/nvs.js"
   },
   "scripts": {
+    "compat": "./bin/nvs.js engines mocha-compat test/spec/**/*.test.js --no-timeouts",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts",
-    "compat": "./bin/nvs engines mocha-compat test/spec/**/*.test.js --no-timeouts"
+    "prepublishOnly": "dtd \"npm run lint\" \"depcheck\"",
+    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
     "cross-spawn-cb": "^0.3.1",
     "exit": "^0.1.2",
     "getopts-compat": "^2.2.5",
     "node-resolve-versions": "^0.1.2",
-    "node-version-use": "^0.1.10",
+    "node-version-use": "^0.1.13",
     "object-assign": "^4.1.1",
     "queue-cb": "^1.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "cr": "^0.1.0",
+    "depcheck": "^0.9.2",
+    "dis-dat": "^0.1.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",

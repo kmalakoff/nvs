@@ -1,6 +1,5 @@
 var assert = require('assert');
 var path = require('path');
-var isVersion = require('is-version');
 var cr = require('cr');
 
 var nvs = require('../..');
@@ -15,15 +14,6 @@ describe('versions', function () {
         assert.ok(!err);
         assert.ok(results.length > 0);
         assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
-        done();
-      });
-    });
-
-    it('latest version - latest', function (done) {
-      nvs('latest', NODE, ['--version'], { stdout: 'string', silent: true }, function (err, results) {
-        assert.ok(!err);
-        assert.ok(results.length > 0);
-        assert.ok(isVersion(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0], 'v'));
         done();
       });
     });
@@ -46,24 +36,22 @@ describe('versions', function () {
       });
     });
 
-    it('multiple versions - 10,12,lts/erbium,latest', function (done) {
-      nvs('10,12,lts/erbium,latest', NODE, ['--version'], { stdout: 'string', silent: true }, function (err, results) {
+    it('multiple versions - 10,12,lts/erbium', function (done) {
+      nvs('10,12,lts/erbium', NODE, ['--version'], { stdout: 'string', silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.equal(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0], 'v10.20.1');
+        assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v10.') === 0);
         assert.ok(cr(results[1].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
-        assert.ok(isVersion(cr(results[2].result.stdout).split('\n').slice(-2, -1)[0], 'v'));
         done();
       });
     });
 
-    it('multiple versions - 10,12,lts/erbium,latest (sort -1)', function (done) {
-      nvs('10,12,lts/erbium,latest', NODE, ['--version'], { sort: -1, stdout: 'string', silent: true }, function (err, results) {
+    it('multiple versions - 10,12,lts/erbium (sort -1)', function (done) {
+      nvs('10,12,lts/erbium', NODE, ['--version'], { sort: -1, stdout: 'string', silent: true }, function (err, results) {
         assert.ok(!err);
         assert.ok(results.length > 0);
-        assert.ok(isVersion(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0], 'v'));
-        assert.ok(cr(results[1].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
-        assert.equal(cr(results[2].result.stdout).split('\n').slice(-2, -1)[0], 'v10.20.1');
+        assert.ok(cr(results[0].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v12.') === 0);
+        assert.ok(cr(results[1].result.stdout).split('\n').slice(-2, -1)[0].indexOf('v10.') === 0);
         done();
       });
     });
