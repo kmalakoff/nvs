@@ -1,1 +1,2 @@
 ignores: ["depcheck"]
+ignoreDirs: [".tmp"]
