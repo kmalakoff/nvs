@@ -20,9 +20,11 @@ if (args.length < 1) {
 
 var nvs = require('..');
 
-nvs(args[0], args.slice(1), assign({ stdio: 'inherit' }, program), function (err) {
-  if (err) {
-    console.log(err.message);
+nvs(args[0], args.slice(1), assign({ stdio: 'inherit' }, program), function (errors, results) {
+  if (errors) {
+    for (var index = 0; index < errors.length; errors++) {
+      console.log(errors[index].message);
+    }
     return process.exit(err.code || -1);
   }
   process.exit(0);

@@ -25,6 +25,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "compat",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "compat"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "memory",
       "cwd": "${workspaceFolder}/performance",
       "program": "${workspaceFolder}/performance/memory/index.js",
