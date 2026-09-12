@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 
-var nvs = require('..');
+var program = require('commander');
 
-if (process.argv.length < 4) {
-  console.log('Missing arguments. Example usage: nvs 0.10,4,6,14 [command]');
+program.option('-s, --silent', 'suppress logging', false);
+program.parse(process.argv);
+
+var args = Array.prototype.slice.call(program.args, 0);
+if (args.length < 1) {
+  console.log('Missing command. Example usage: nvs 0.10,4,6,14 [command]]');
   return process.exit(-1);
 }
 
-nvs(process.argv[2].split(','), process.argv[3], process.argv.slice(4), function (err) {
+var nvs = require('..');
+
+nvs(args[0].split(','), args[1], args.slice(2), program, function (err) {
   if (err) {
     console.log(err.message);
     return process.exit(err.exitCode || -1);

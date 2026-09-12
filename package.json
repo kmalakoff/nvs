@@ -26,6 +26,7 @@
     "format": "prettier --write '**/*.js'"
   },
   "dependencies": {
+    "commander": "^2.20.3",
     "cross-spawn-cb": "^0.1.1",
     "nave": "^3.2.1",
     "queue-cb": "^1.1.2"
